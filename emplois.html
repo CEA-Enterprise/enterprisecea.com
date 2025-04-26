@@ -51,11 +51,13 @@
       border-bottom: 1px solid #ddd;
       border-radius: 1.2rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      order: 1;
     }
     #offres-liste {
       flex: 1;
       overflow-y: auto;
       padding: 1rem;
+      order: 2;
     }
     .offres-section {
       margin-bottom: 2rem;
@@ -134,10 +136,12 @@
         border-bottom: none;
         border-left: 1px solid #ddd;
         border-radius: 1.2rem 0 0 1.2rem;
+        order: 2;
       }
       #offres-liste {
         width: 50%;
         border-right: 1px solid #ddd;
+        order: 1;
       }
     }
   </style>
@@ -163,7 +167,6 @@
               <button class="postuler-btn">Postuler</button>
             </div>
           </div>
-          <!--**************************************************************************************************************-->
           <div class="offre">
             <img src="images/bijoux2.jpeg" alt="CEA">
             <div class="entreprise">CEA Enterprise</div>
@@ -186,9 +189,9 @@
               <button class="postuler-btn">Postuler</button>
             </div>
           </div>
-          <!--**************************************************************************************************************-->
         </div>
       </div>
+
       <div class="offres-section">
         <h2>Stages Professionnels</h2>
         <div class="offres-group">
@@ -205,8 +208,9 @@
           </div>
         </div>
       </div>
+
       <div class="offres-section">
-        <h2>Emplois Stable</h2>
+        <h2>Emplois Stables</h2>
         <div class="offres-group">
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
@@ -222,10 +226,12 @@
         </div>
       </div>
     </div>
+
     <div id="offre-details">
       <p>Sélectionnez une offre pour voir les détails ici.</p>
     </div>
   </div>
+
   <script>
     document.querySelectorAll(".view-btn").forEach(button => {
       button.addEventListener("click", function () {
