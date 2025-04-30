@@ -195,6 +195,138 @@
         margin: 1rem;
       }
     }
+    /*---------------------------DEBUT DE STyle du formulaire de postulation --------------------------------------------*/
+    form {
+  margin-top: 2rem;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--blue);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form input[type="file"] {
+  padding: 0.5rem;
+}
+
+form button[type="submit"] {
+  padding: 0.8rem;
+  background: var(--blue);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.success-message {
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+/*--------------------------- FIN DE STyle du formulaire de postulation ET DEBUT DU FADEINWOOM  -----------------------------------*/
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+  @keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-form {
+  animation: fadeInZoom 0.5s ease-out;
+}
+.ouvrir-btn,
+.consulter-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--blue);
+  color: white !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+}
+
+.ouvrir-btn:hover,
+.consulter-btn:hover {
+  background-color: #0056b3;
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1rem;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeToast 0.5s forwards, hideToast 0.5s 4s forwards;
+}
+
+.toast-success {
+  background-color: #28a745;
+}
+
+.toast-error {
+  background-color: #dc3545;
+}
+
+@keyframes fadeToast {
+  to { opacity: 1; }
+}
+
+@keyframes hideToast {
+  to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
   </style>
 </head>
 <body>
@@ -246,7 +378,7 @@
       </div>
 
       <div class="offres-section">
-        <h2>Stages Professionnels</h2>
+        <h2>Stages Academiques & Professionnels</h2>
         <div class="offres-group">
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
@@ -281,61 +413,62 @@
 <div class="offres-section">
         <h2>Subventions / Incubateurs et accelerateurs</h2>
         <div class="offres-group">
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">HULT PRIZE ORGANISER</div>
-            <h3>HULT PRIZE</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <div class="offre" data-url="https://hultprize.org">
+              <img src="images/cea-logo.jpg" alt="CEA">
+              <div class="entreprise">HULT PRIZE ORGANISER</div>
+              <h3>HULT PRIZE</h3>
+              <p>Lieu : Yaoundé</p>
+              <p>Date : 15 avril 2025</p>
+              <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+              </div>
           </div>
+
           <!--/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/-->
-            <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">HULT PRIZE ORGANISER</div>
-            <h3>HULT PRIZE</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+            <div class="offre" data-url="https://hultprize.org">
+              <img src="images/cea-logo.jpg" alt="CEA">
+              <div class="entreprise">HULT PRIZE ORGANISER</div>
+              <h3>HULT PRIZE</h3>
+              <p>Lieu : Yaoundé</p>
+              <p>Date : 15 avril 2025</p>
+              <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+              </div>
           </div>
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">HULT PRIZE ORGANISER</div>
-            <h3>HULT PRIZE</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <div class="offre" data-url="https://hultprize.org">
+              <img src="images/cea-logo.jpg" alt="CEA">
+              <div class="entreprise">HULT PRIZE ORGANISER</div>
+              <h3>HULT PRIZE</h3>
+              <p>Lieu : Yaoundé</p>
+              <p>Date : 15 avril 2025</p>
+              <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+              </div>
           </div>
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">HULT PRIZE ORGANISER</div>
-            <h3>HULT PRIZE</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <div class="offre" data-url="https://hultprize.org">
+              <img src="images/cea-logo.jpg" alt="CEA">
+              <div class="entreprise">HULT PRIZE ORGANISER</div>
+              <h3>HULT PRIZE</h3>
+              <p>Lieu : Yaoundé</p>
+              <p>Date : 15 avril 2025</p>
+              <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+              </div>
           </div>
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">HULT PRIZE ORGANISER</div>
-            <h3>HULT PRIZE</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <div class="offre" data-url="https://hultprize.org">
+              <img src="images/cea-logo.jpg" alt="CEA">
+              <div class="entreprise">HULT PRIZE ORGANISER</div>
+              <h3>HULT PRIZE</h3>
+              <p>Lieu : Yaoundé</p>
+              <p>Date : 15 avril 2025</p>
+              <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+              </div>
           </div>
           <!--/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/-->
         </div>
@@ -384,40 +517,41 @@
 <div class="offres-section">
         <h2>Formations et Attestations Gratuites</h2>
         <div class="offres-group">
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise"> HUAWEI </div>
-            <h3>Développeur Web</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
-          </div>
-          <!--/*-----------------------------------------------------------------------------------------------------------------------------*/-->
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">MINFI</div>
-            <h3>ADMINISTRATION DES SYSTEMES</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <div class="offre" data-url="https://formation-huawei.com">
+                <img src="images/cea-logo.jpg" alt="CEA">
+                <div class="entreprise">HUAWEI</div>
+                <h3>Développeur Web</h3>
+                <p>Lieu : Yaoundé</p>
+                <p>Date : 15 avril 2025</p>
+                <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+                </div>
           </div>
 
-          <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
-            <div class="entreprise">Orange Cameroun</div>
-            <h3>Administration reseau</h3>
-            <p>Lieu : Yaoundé</p>
-            <p>Date : 15 avril 2025</p>
-            <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
-            </div>
+          <!--/*-----------------------------------------------------------------------------------------------------------------------------*/-->
+          <div class="offre" data-url="https://formation-huawei.com">
+                <img src="images/cea-logo.jpg" alt="CEA">
+                <div class="entreprise">HUAWEI</div>
+                <h3>Développeur Web</h3>
+                <p>Lieu : Yaoundé</p>
+                <p>Date : 15 avril 2025</p>
+                <div class="actions">
+                      <button class="view-btn">View</button>
+                      <button class="postuler-btn">Postuler</button>
+                </div>
+          </div>
+
+          <div class="offre" data-url="https://formation-huawei.com">
+                <img src="images/cea-logo.jpg" alt="CEA">
+                <div class="entreprise">HUAWEI</div>
+                <h3>Développeur Web</h3>
+                <p>Lieu : Yaoundé</p>
+                <p>Date : 15 avril 2025</p>
+                <div class="actions">
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
+                </div>
           </div>
           <!--/*-----------------------------------------------------------------------------------------------------------------------------*/-->
         </div>
@@ -457,8 +591,8 @@
             <p>Lieu : Yaoundé</p>
             <p>Date : Septembre 2025</p>
             <div class="actions">
-              <button class="view-btn">View</button>
-              <button class="postuler-btn">Postuler</button>
+                  <button class="view-btn">View</button>
+                  <button class="postuler-btn">Postuler</button>
             </div>
           </div>
           <!--/*----------------------------------------------------------------------------------------------------------------------*/-->
@@ -470,35 +604,173 @@
     </div>
   </div>
 
+
+
+  <!--        DESCRIPTION DES CATEGORIES :
+
+
+    Jobs Étudiants  : Petits jobs réservés aux étudiants, généralement sur le campus.
+Stages Academiqaue & Professionnels : Stages pratiques en entreprise pour étudiants ou jeunes diplômés.
+Emplois Stables Postes fixes en entreprise pour travailleurs confirmés ou diplômés.
+Subventions / Incubateurs et accélérateurs  : Aides financières ou accompagnement pour projets/entrepreneurs.
+Bourses : Aides financières pour études universitaires (au Cameroun ou à l'étranger).
+Formations et Attestations Gratuites  : Cours gratuits certifiants pour étudiants ou jeunes travailleurs.
+Concours Nationaux :  Examens officiels pour intégrer des écoles, académies, ou corps de métier publics.
+
+
+
+
+
+
+  -->
+
   <script>
-    document.querySelectorAll('.view-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const offre = button.closest('.offre');
-        const imageSrc = offre.querySelector('img').src;
-        const titre = offre.querySelector('h3').innerText;
-        const entreprise = offre.querySelector('.entreprise').innerText;
-        const lieu = offre.querySelector('p:nth-of-type(1)').innerText;
-        const date = offre.querySelector('p:nth-of-type(2)').innerText;
+  function afficherOffre(offre, afficherFormulaire = false) {
+    const section = offre.closest('.offres-section').querySelector('h2').innerText.trim().toLowerCase();
+    const imageSrc = offre.querySelector('img').src;
+    const titre = offre.querySelector('h3').innerText;
+    const entreprise = offre.querySelector('.entreprise').innerText;
+    const lieu = offre.querySelector('p:nth-of-type(1)').innerText;
+    const date = offre.querySelector('p:nth-of-type(2)').innerText;
 
-        const offreDetails = document.getElementById('offre-details');
-        offreDetails.classList.remove('active');
-        void offreDetails.offsetWidth; // reset animation
-        offreDetails.innerHTML = `
-          <img class="detail-image" src="${imageSrc}" alt="">
-          <h2 style="color: var(--blue);">${titre}</h2>
-          <h3>${entreprise}</h3>
-          <p><strong>${lieu}</strong></p>
-          <p><strong>${date}</strong></p>
-          <p style="margin-top:1rem;">Voici une description complète du poste, incluant les missions, prérequis, etc.</p>
-          <button class="postuler-btn" style="margin-top: 1rem;">Postuler</button>
-        `;
-        offreDetails.classList.add('active');
+    const offreDetails = document.getElementById('offre-details');
+    offreDetails.classList.remove('active');
+    void offreDetails.offsetWidth;
 
+    offreDetails.innerHTML = `
+      <img class="detail-image" src="${imageSrc}" alt="">
+      <h2 style="color: var(--blue);">${titre}</h2>
+      <h3>${entreprise}</h3>
+      <p><strong>${lieu}</strong></p>
+      <p><strong>${date}</strong></p>
+      <p style="margin-top:1rem;">Voici une description complète du poste, incluant les missions, prérequis, etc.</p>
+    `;
+
+    let email = null;
+    let showFileInput = true;
+
+    if (section.includes("job")) {
+      email = "jobsetudiant0@gmail.com";
+      showFileInput = false;
+    } else if (section.includes("stage")) {
+      email = "stagesap0@gmail.com";
+      showFileInput = true;
+    } else if (section.includes("emploi")) {
+      email = "stableemplois@gmail.com";
+      showFileInput = true;
+    } else if (section.includes("bourse")) {
+      email = "etudebourse2@gmail.com";
+      showFileInput = true;
+    } else if (
+      section.includes("subvention") ||
+      section.includes("incubateur") ||
+      section.includes("accélérateur") ||
+      section.includes("accelerateur")
+    ) {
+      email = "subventionincubateur@gmail.com";
+      showFileInput = true;
+    } else if (
+      section.includes("formation") ||
+      section.includes("attestation") ||
+      section.includes("concours")
+    ) {
+      email = "infohubuy1@gmail.com";
+      showFileInput = true;
+    }
+
+    if (email) {
+      offreDetails.innerHTML += `
+        <button class="postuler-btn" id="ouvrir-formulaire" style="margin-top: 1rem;">Postuler</button>
+      `;
+
+      setTimeout(() => {
+        const btnFormulaire = document.getElementById('ouvrir-formulaire');
+        if (btnFormulaire) {
+          btnFormulaire.addEventListener('click', () => {
+            btnFormulaire.style.display = "none";
+
+            const formHTML = document.createElement('form');
+            formHTML.id = 'form-candidature';
+            formHTML.classList.add('animate-form');
+            formHTML.method = 'POST';
+            formHTML.action = `https://formsubmit.co/ajax/${email}`;
+            formHTML.enctype = 'multipart/form-data';
+
+            let contenuFormulaire = `
+              <input type="text" name="Nom complet" placeholder="Prénom et Nom" required>
+              <input type="email" name="Email" placeholder="Email" required>
+              <input type="tel" name="Téléphone" placeholder="Téléphone" required>
+              <textarea name="Message" rows="4" placeholder="Votre message" required></textarea>
+            `;
+
+            if (showFileInput) {
+              contenuFormulaire += `<input type="file" name="CV" accept=".pdf,.doc,.docx" required>`;
+            }
+
+            contenuFormulaire += `
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="box">
+              <button type="submit" class="postuler-btn">Envoyer ma candidature</button>
+            `;
+
+            formHTML.innerHTML = contenuFormulaire;
+            offreDetails.appendChild(formHTML);
+
+            formHTML.addEventListener('submit', function (e) {
+              e.preventDefault();
+              const formData = new FormData(formHTML);
+
+              fetch(formHTML.action, {
+                method: "POST",
+                body: formData
+              })
+              .then(response => {
+                formHTML.innerHTML = "";
+                afficherToast("✅ Votre candidature a été envoyée avec succès !", "success");
+              })
+              .catch(error => {
+                afficherToast("❌ Une erreur est survenue. Veuillez réessayer.", "error");
+              });
+            });
+          });
+        }
+      }, 100);
+
+      if (afficherFormulaire) {
         setTimeout(() => {
-          document.querySelector('#offre-details img.detail-image').classList.add('zoomed');
-        }, 50);
-      });
-    });
-  </script>
+          const btnFormulaire = document.getElementById('ouvrir-formulaire');
+          if (btnFormulaire) btnFormulaire.click();
+        }, 200);
+      }
+    }
+
+    offreDetails.classList.add('active');
+  }
+
+  document.body.addEventListener('click', function (e) {
+    if (e.target.classList.contains('view-btn')) {
+      const offre = e.target.closest('.offre');
+      afficherOffre(offre, false);
+    }
+
+    if (e.target.classList.contains('postuler-btn') && !e.target.closest('form')) {
+      const offre = e.target.closest('.offre');
+      if (offre) {
+        e.stopPropagation();
+        afficherOffre(offre, true);
+      }
+    }
+  });
+
+  function afficherToast(message, type = "success") {
+    const toast = document.createElement('div');
+    toast.className = 'toast-message ' + (type === "error" ? 'toast-error' : 'toast-success');
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 5000);
+  }
+</script>
 </body>
 </html>
