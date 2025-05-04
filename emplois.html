@@ -329,6 +329,89 @@ form button[type="submit"]:hover {
 @keyframes hideToast {
   to { opacity: 0; transform: translateX(-50%) translateY(20px); }
 }
+
+/*    Gestion du zoom de l'image dans le bloc de description au clic sur l'image ou sur la  croix.*/
+/* Conteneur d'image plein écran */
+#zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#zoom-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#zoom-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#zoomed-img {
+  width: 65vh;    /*------------ Au lieu de Auto  ----------------------*/
+  height:50vh;    /*------------ Au lieu de Auto  ----------------------*/
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+
+#close-zoom {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+
+/*------------------------------------ filtrage en fondu de la recherche des offre --------------------*/
+..offre {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  /* On garde ces propriétés pour un bon placement */
+  margin-bottom: 1rem;
+}
+
+.offre.hide {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
   </style>
 </head>
 <body>
@@ -340,10 +423,12 @@ form button[type="submit"]:hover {
   <div id="emplois-wrapper">
     <div id="offres-liste">
       <div class="offres-section">
+<!--############################################################  CATEGORIE JOBS ETUDIANTS  ########################################-->
         <h2>Jobs Étudiants</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
-            <img src="images/cea-logo.jpg" alt="CEA">
+            <img src="images/bijoux2.jpeg" alt="CEA">
             <div class="entreprise">CEA Enterprise</div>
             <h3>Ambassadeur CEA</h3>
             <p>Lieu : Campus Yaoundé</p>
@@ -352,6 +437,9 @@ form button[type="submit"]:hover {
               <button class="view-btn">Voir</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Premiere description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
           <!--------------------------------------------------------------------------------------------------------->
           <div class="offre">
@@ -364,7 +452,11 @@ form button[type="submit"]:hover {
               <button class="view-btn">Voir</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Seconde description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*---------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/bijoux2.jpeg" alt="CEA">
             <div class="entreprise">CEA Enterprise</div>
@@ -375,13 +467,19 @@ form button[type="submit"]:hover {
               <button class="view-btn">Voir</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Troisieme Description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>
 
       <div class="offres-section">
+<!--############################################################cATEGORIE Stages Academiques ######################################-->
         <h2>Stages Academiques & Professionnels</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">CEA Enterprise</div>
@@ -392,13 +490,19 @@ form button[type="submit"]:hover {
               <button class="view-btn">Voir</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Quatrieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>
 
       <div class="offres-section">
+<!--############################################################cATEGORIE Emplois Stables ######################################-->
         <h2>Emplois Stables</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">CEA Enterprise</div>
@@ -409,12 +513,18 @@ form button[type="submit"]:hover {
               <button class="view-btn">Voir</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Cinquieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>
 <div class="offres-section">
+<!--############################################################ CATEGORIE Subventions / Incubateurs ###############################-->
         <h2>Subventions / Incubateurs et accelerateurs</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://hultprize.org">
               <img src="images/cea-logo.jpg" alt="CEA">
               <div class="entreprise">HULT PRIZE ORGANISER</div>
@@ -425,9 +535,12 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
               </div>
+              <p class="offre-description" hidden>
+                Sixieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
 
-          <!--/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*-----------------------------------------------------------------------------------------------------------------*/-->
             <div class="offre" data-url="https://hultprize.org">
               <img src="images/cea-logo.jpg" alt="CEA">
               <div class="entreprise">HULT PRIZE ORGANISER</div>
@@ -438,7 +551,11 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
               </div>
+              <p class="offre-description" hidden>
+                Septieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://hultprize.org">
               <img src="images/cea-logo.jpg" alt="CEA">
               <div class="entreprise">HULT PRIZE ORGANISER</div>
@@ -449,7 +566,11 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
               </div>
+              <p class="offre-description" hidden>
+                Huitieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://hultprize.org">
               <img src="images/cea-logo.jpg" alt="CEA">
               <div class="entreprise">HULT PRIZE ORGANISER</div>
@@ -460,7 +581,11 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
               </div>
+              <p class="offre-description" hidden>
+                Neuvieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://hultprize.org">
               <img src="images/cea-logo.jpg" alt="CEA">
               <div class="entreprise">HULT PRIZE ORGANISER</div>
@@ -471,13 +596,18 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
               </div>
+              <p class="offre-description" hidden>
+                Dixieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-          <!--/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*-------------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>      
 <div class="offres-section">
+<!--############################################################ CATEGORIE bourses  ################################################-->
         <h2>Bourses</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">AAK University</div>
@@ -488,8 +618,11 @@ form button[type="submit"]:hover {
               <button class="view-btn">View</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Onzieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-          <!--/*----------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*-----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">HND University</div>
@@ -500,8 +633,11 @@ form button[type="submit"]:hover {
               <button class="view-btn">View</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Douzieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-
+            <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">University of Yaounde 1</div>
@@ -512,13 +648,19 @@ form button[type="submit"]:hover {
               <button class="view-btn">View</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Treizieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
           <!--/*----------------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>
 <div class="offres-section">
+<!--############################################################ CATEGORIE Formations et Attestations #############################-->
+
         <h2>Formations et Attestations Gratuites</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://formation-huawei.com">
                 <img src="images/cea-logo.jpg" alt="CEA">
                 <div class="entreprise">HUAWEI</div>
@@ -529,9 +671,12 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
                 </div>
+                <p class="offre-description" hidden>
+                Quatorzieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
 
-          <!--/*-----------------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*-----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://formation-huawei.com">
                 <img src="images/cea-logo.jpg" alt="CEA">
                 <div class="entreprise">HUAWEI</div>
@@ -542,8 +687,11 @@ form button[type="submit"]:hover {
                       <button class="view-btn">View</button>
                       <button class="postuler-btn">Postuler</button>
                 </div>
+                <p class="offre-description" hidden>
+                Quinzieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre" data-url="https://formation-huawei.com">
                 <img src="images/cea-logo.jpg" alt="CEA">
                 <div class="entreprise">HUAWEI</div>
@@ -554,14 +702,19 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
                 </div>
+                <p class="offre-description" hidden>
+                Seizieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-          <!--/*-----------------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*------------------------------------------------------------------------------------------------------------------*/-->
         </div>
       </div>
 
 <div class="offres-section">
+<!--############################################################ CATEGORIE Concours Nationaux #####################################-->
         <h2>Concours Nationaux</h2>
         <div class="offres-group">
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">ENSPY</div>
@@ -572,8 +725,11 @@ form button[type="submit"]:hover {
               <button class="view-btn">View</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Diseptieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-          <!--/*----------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*-----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">Gendarmerie Nationale</div>
@@ -584,8 +740,11 @@ form button[type="submit"]:hover {
               <button class="view-btn">View</button>
               <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Dix-huitieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-
+            <!--/*----------------------------------------------------------------------------------------------------------------*/-->
           <div class="offre">
             <img src="images/cea-logo.jpg" alt="CEA">
             <div class="entreprise">ENAM</div>
@@ -596,17 +755,34 @@ form button[type="submit"]:hover {
                   <button class="view-btn">View</button>
                   <button class="postuler-btn">Postuler</button>
             </div>
+            <p class="offre-description" hidden>
+                Dix-neuvieme description : Cette offre concerne un stage de développement web de 3 mois à Yaoundé. Compétences requises : HTML, CSS, JavaScript.
+            </p>
           </div>
-          <!--/*----------------------------------------------------------------------------------------------------------------------*/-->
+          <!--/*----------------------------------------------------------------------------------------------------------------*/-->
         </div>
-      </div>      
+      </div>
+<!--######################################################### FIN CATEGORIE Concours Nationaux #####################################-->
     </div>
+    
+
     <div id="offre-details">
       <p>Sélectionnez une offre pour voir les détails ici.</p>
+      <!-------------------------------- Debut resultat de recherche Null -->
+    <p id="aucun-resultat" style="display:none; text-align:center; color:#dc3545; font-weight:bold; margin-top:1rem;">
+          Aucune offre ne correspond à votre recherche.
+    </p>
+     <!-------------------------------- Finresultat de recherche Null -->
     </div>
   </div>
 
 
+<div id="zoom-overlay" class="hidden">
+  <div id="zoom-content">
+    <button id="close-zoom">✖</button>
+    <img id="zoomed-img" src="" alt="">
+  </div>
+</div>
 
   <!--        DESCRIPTION DES CATEGORIES :
 
@@ -626,6 +802,7 @@ Concours Nationaux :  Examens officiels pour intégrer des écoles, académies, 
 
   -->
 
+
   <script>
   function afficherOffre(offre, afficherFormulaire = false) {
     const section = offre.closest('.offres-section').querySelector('h2').innerText.trim().toLowerCase();
@@ -634,19 +811,23 @@ Concours Nationaux :  Examens officiels pour intégrer des écoles, académies, 
     const entreprise = offre.querySelector('.entreprise').innerText;
     const lieu = offre.querySelector('p:nth-of-type(1)').innerText;
     const date = offre.querySelector('p:nth-of-type(2)').innerText;
+    const contenuOffre = offre.querySelector('.offre-description').innerText;   // descriptio  rajouté
 
     const offreDetails = document.getElementById('offre-details');
     offreDetails.classList.remove('active');
     void offreDetails.offsetWidth;
 
     offreDetails.innerHTML = `
-      <img class="detail-image" src="${imageSrc}" alt="">
+    <button id="fermer-details" style="position: absolute; top: 10px; right: 10px;">❌</button>
+      <div class="zoom-container">
+        <img class="detail-image zoomable-image" src="${imageSrc}" alt="">
+      </div>
       <h2 style="color: var(--blue);">${titre}</h2>
       <h3>${entreprise}</h3>
       <p><strong>${lieu}</strong></p>
       <p><strong>${date}</strong></p>
-      <p style="margin-top:1rem;">Voici une description complète du poste, incluant les missions, prérequis, etc.</p>
-    `;
+      <p style="margin-top:1rem;">${contenuOffre}</p>   
+    `;    //Rajout de la description propre a une carte dans le bloc de description
 
     let email = null;
     let showFileInput = true;
@@ -773,6 +954,85 @@ Concours Nationaux :  Examens officiels pour intégrer des écoles, académies, 
       toast.remove();
     }, 5000);
   }
+
+  //-------------------------------------------- Debut code de zoom d'image
+
+  document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('zoomable-image')) {
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    const zoomedImg = document.getElementById('zoomed-img');
+    zoomedImg.src = e.target.src;
+    zoomOverlay.classList.remove('hidden');
+    setTimeout(() => zoomOverlay.classList.add('visible'), 10); // décalage pour transition
+  }
+
+  if (e.target.id === 'close-zoom' || e.target.id === 'zoom-overlay') {
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    zoomOverlay.classList.remove('visible');
+    setTimeout(() => {
+      zoomOverlay.classList.add('hidden');
+      document.getElementById('zoomed-img').src = '';
+    }, 300);
+  }
+});
+
+
+  //-------------------------------------------- Fin code de zoom d'image
+    document.getElementById('offre-details').addEventListener('click', function(e) {
+  if (e.target.id === 'fermer-details') {
+    this.classList.remove('active');
+    this.innerHTML = ''; // Nettoyer le contenu
+  }
+});
+const submitBtn = formHTML.querySelector('button[type="submit"]');
+submitBtn.disabled = true;
+
+
+
+</script> 
+<script>
+
+  //-----------------------------------------------------------------------------   Fonctionnalité de la recherche
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector('#barre-haut input[type="search"]');
+    const offres = document.querySelectorAll('.offre');
+    const messageAucun = document.getElementById('aucun-resultat');
+    const messageSelection = document.querySelector('#offre-details p');
+
+    searchInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase().trim();
+      let auMoinsUnMatch = false;
+
+      offres.forEach(offre => {
+        const titre = offre.querySelector('h3')?.innerText.toLowerCase() || '';
+        const entreprise = offre.querySelector('.entreprise')?.innerText.toLowerCase() || '';
+        const description = offre.querySelector('.offre-description')?.innerText.toLowerCase() || '';
+        const autres = Array.from(offre.querySelectorAll('p:not(.offre-description)'))
+                            .map(p => p.innerText.toLowerCase())
+                            .join(' ');
+
+        const match = titre.includes(searchTerm) ||
+                      entreprise.includes(searchTerm) ||
+                      description.includes(searchTerm) ||
+                      autres.includes(searchTerm);
+
+        if (match) {
+          offre.classList.remove('hide');
+          auMoinsUnMatch = true;
+        } else {
+          offre.classList.add('hide');
+        }
+      });
+
+      if (auMoinsUnMatch) {
+        messageAucun.style.display = 'none';
+        messageSelection.style.display = 'block';
+      } else {
+        messageAucun.style.display = 'block';
+        messageSelection.style.display = 'none';
+      }
+    });
+  });
 </script>
 </body>
 </html>
