@@ -1093,7 +1093,7 @@ a{
 }
 
 .contact .row .contact-info {
-    width: 100%;
+    width: 40%;
     
 } 
 .contact .row .contact-form-container {
@@ -1101,7 +1101,7 @@ a{
 } 
 
 .contact .row .contact-info .box{
-    margin: 4rem 2rem;
+    margin: 1.5rem 1rem;
 } 
 
 .contact .row .contact-info .box h3{
