@@ -28,7 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site du conglomerat [CEA Enterprise] de Ahmed Khaled Adjoudji – Portfolio, projets, et contact.">
+    <meta name="description" content="Faire de chacunes de vos dépenses quotidiennes un investissement grace auquel vous toucherez continuellement  un salaire mensuel et serez co-proprietaires d'entreprises prospere du secteur privé grace a vos actifs : Site du conglomerat [CEA Enterprise] des étudiants/Travailleurs/Individu actionnaires des universites du Cameroun par Ahmed Khaled Adjoudji - Pour la creation d'entreprises locales a haut capital et la nationalisation des industries de production, de transformation et d'exploitation des ressources et produits locaux tout en contribuant a l'infrastructuration de la societe, au developpement des localites, a la lute contre le chomage, a la lutte contre la pauvreté et la famine ainsi qu'a l'initialisation a l'entrepreneuriat et a l'investissement en bourse.">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="keywords" content="stage academique et professionnel, Formations et attestations, emploi, job étudiant, bourses, concours, stage, oportunité, Yaoundé, université, Academique, professionnel, cea, enterprise, actionnaire, ">
     <meta name="author" content="Ahmed Khaled Adjoudji">
@@ -40,6 +40,71 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/1532971921.js" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="iax45EETSZ_I5yzEd0mEhAP_1VLDu8C8BK1misCcG6E" />
+    <style>
+        /*    Gestion du zoom de l'image dans le bloc de description au clic sur l'image ou sur la  croix.*/
+/* Conteneur d'image apres zoom plein écran */
+#zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#zoom-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#zoom-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#zoomed-img {
+  width: 65vh;    /*------------ Au lieu de Auto  ----------------------*/
+  height:40vh;    /*------------ Au lieu de Auto  ----------------------*/
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+
+#close-zoom {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+
+/*------------------------------------ fin du zoom image --------------------*/
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
