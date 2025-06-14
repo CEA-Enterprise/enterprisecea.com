@@ -493,6 +493,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- Portfolio  section end-->
+<!------------------------------------------------------------------------------ zoomed zone start ---------------------------->
+<div id="zoom-overlay" class="hidden">
+  <div id="zoom-content">
+    <button id="close-zoom">✖</button>
+    <img id="zoomed-img" src="" alt="">
+  </div>
+</div>
+<!------------------------------------------------------------------------------ zoomed zone end ---------------------------->
 
 
 <!-- Testimonial  section (Co-fondateurs) Start-->
@@ -733,8 +741,37 @@ var typed2 = new Typed('.typing-text2', {
 ],
   typeSpeed:50,
   loop:true
-});
-   
+});     
    </script>
+    <script>
+          const bloc = document.getElementById('filter-image');
+
+          bloc.addEventListener('mouseenter', () => {
+          bloc.classList.add('zoomable-image');
+        });
+
+          bloc.addEventListener('mouseleave', () => {
+          bloc.classList.remove('zoomable-image');
+        });
+//-------------------------------------------------------------------------- Debut code de zoom d'image
+  document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('zoomable-image')) {
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    const zoomedImg = document.getElementById('zoomed-img');
+    zoomedImg.src = e.target.src;
+    zoomOverlay.classList.remove('hidden');
+    setTimeout(() => zoomOverlay.classList.add('visible'), 10); // décalage pour transition
+  }
+
+  if (e.target.id === 'close-zoom' || e.target.id === 'zoom-overlay') {
+    const zoomOverlay = document.getElementById('zoom-overlay');
+    zoomOverlay.classList.remove('visible');
+    setTimeout(() => {
+      zoomOverlay.classList.add('hidden');
+      document.getElementById('zoomed-img').src = '';
+    }, 300);
+  }
+});
+</script>
 </body>
 </html>
